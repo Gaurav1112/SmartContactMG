@@ -1,12 +1,19 @@
 package com.sc.smartContact.controllers;
 
+import java.security.Principal;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+
+import com.sc.smartContact.helper.Helper;
 
 @Controller
 @RequestMapping("/user")
 public class UserController {
+
+  private Logger log = LoggerFactory.getLogger(this.getClass());
 
   // user dashboard page
   @RequestMapping("/dashboard")
@@ -18,8 +25,10 @@ public class UserController {
   // user profile page
 
   @RequestMapping("/profile")
-  public String userProfile() {
-    System.out.println("User Dashboard!!");
+  public String userProfile(Authentication authentication) {
+    String name = Helper.getEmailOfLoggedUser(authentication);
+    log.info("name: {}", name);
+    // database fetch
     return "user/profile";
   }
 
