@@ -71,8 +71,8 @@ public class Oauth2success implements AuthenticationSuccessHandler {
       }
     } else if (authorizedClient.equals("github")) {
       log.info("user Details: {}", user.getAttributes());
-      String email = user.getAttribute("url").toString();
-      String name = user.getAttribute("login").toString();
+      String email = user.getAttribute("html_url");
+      String name = user.getAttribute("name").toString();
       String picture = user.getAttribute("avatar_url").toString();
 
       User user1 = new User();

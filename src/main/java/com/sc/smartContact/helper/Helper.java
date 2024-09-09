@@ -24,8 +24,7 @@ public class Helper {
         userName = oauth2User.getAttribute("email").toString();
 
       } else if (clientId.equalsIgnoreCase("github")) {
-        userName = oauth2User.getAttribute("email") != null ? oauth2User.getAttribute("email").toString()
-            : oauth2User.getAttribute("login").toString() + "@gmail.com";
+        userName = oauth2User.getAttribute("html_url").toString();
 
       }
       System.out.println(userName);
